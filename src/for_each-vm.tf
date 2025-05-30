@@ -22,6 +22,7 @@ variable "each_vm" {
   ]
 }
 
+
 # Создание ВМ с использованием for_each
 resource "yandex_compute_instance" "db_vms" {
   for_each    = { for vm in var.each_vm : vm.vm_name => vm }
@@ -34,10 +35,9 @@ resource "yandex_compute_instance" "db_vms" {
     memory = each.value.ram
   }
 
-  boot_disk {
+boot_disk {
     initialize_params {
-      image_id = "fd81hgrcv6lsnkremf32" # Ubuntu 20.04 LTS
-      size     = each.value.disk_volume
+      image_id = data.yandex_compute_image.ubuntu_2004.id
     }
   }
 

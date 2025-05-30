@@ -10,9 +10,9 @@ resource "yandex_compute_instance" "web" {
     memory = 2
   }
 
-  boot_disk {
+boot_disk {
     initialize_params {
-      image_id = "fd81hgrcv6lsnkremf32"  # Ubuntu 20.04 LTS
+      image_id = data.yandex_compute_image.ubuntu_2004.id
     }
   }
 

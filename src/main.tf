@@ -1,3 +1,7 @@
+data "yandex_compute_image" "ubuntu_2004" {
+  family = "ubuntu-2004-lts"
+}
+
 resource "yandex_vpc_network" "develop" {
   name = var.vpc_name
 }
